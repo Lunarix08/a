@@ -1,0 +1,526 @@
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+h1{
+    font-size: 20;
+    font-weight: bold;
+}
+h2 {
+    margin-bottom: 20px;
+    font-size: 45px;
+}
+.menu-item, .user-item, .order-item, .payment-item{
+    border-radius: 30px;
+    padding: 25px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 1200;
+}
+
+
+.menu-item div, .user-item div, .order-item div, .payment-item div{
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.menu-item img {
+    position: absolute;
+    width: 165px;
+    height: 165px;
+    object-fit: cover;
+    border-radius: 5px;
+    right: 45;
+    top: 17;
+}
+
+.btn {
+    padding: 5px 10px;
+    margin-right: 5px;
+    text-decoration: none;
+    color: #1e3932;
+    background-color: #ffffff;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 1px solid #1e3932;
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn:hover {
+    color: white;
+    background-color: #1e3932;
+}
+.btn-add {
+    font-weight:normal;
+    display: block;
+    width: 200px;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
+    color: #1e3932;
+    background-color: #ffffff;
+    text-decoration: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000;
+    width: 70%;
+
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.modal-header h3 {
+    margin: 0;
+}
+.modal-body p {
+    margin: 10px 0;
+}
+.modal-close {
+    cursor: pointer;
+    color: #dc3545;
+    font-size: 30px;
+}
+.modal-overlay {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+.line {
+    border-bottom: 1.5px solid #0000007e;
+    width: 100%;
+    height: 0;
+}
+
+.menu-item{
+    position: relative;
+}
+input.input{
+    font-family: "Montserrat", sans-serif;
+    border-radius: 30px;
+    border: 1px solid black;
+    padding: 15px;
+    font-size: 15px;
+    width: 700;
+    height: 40;
+    margin-bottom: 8px;
+}
+input#product-name, input#product-id, input#product-price, input#product-description{
+    font-family: "Montserrat", sans-serif;
+    border-radius: 30px;
+    border: 1px solid black;
+    padding: 5px;
+    font-size: 15px;
+}
+h3{
+    font-size: 30px;
+    margin-bottom: -10;
+}
+#order-details-modal.modal{
+    width: 800;
+    border-radius: 25px;
+}
+label{
+    font-size:16px;
+}
+.user-details {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.user-details p {
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+.user-details strong {
+    font-weight: bold;
+}
+span.text{
+    font-weight: normal;
+}
+.user-details-container{
+    font-weight: bold;
+}
+.btn-refresh {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 3px;
+    background-color: #007bff;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-header h3 {
+    margin: 0;
+}
+
+.modal-close {
+    cursor: pointer;
+    color: #dc3545;
+    font-size: 30px;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+#add-user-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#add-user-form div {
+    margin-bottom: 20px;
+}
+
+#add-user-form label {
+    margin-bottom: 10px;
+}
+
+#add-user-form input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#add-user-form button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+span{
+    font-weight: normal;
+}
+.status-select{
+    font-family: "Montserrat", sans-serif;
+    margin-bottom: 20px;
+    border-radius: 30px;
+    height: 30;
+    padding: 5;
+}
+.order-item.cancelled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+#role-select.input{
+    font-family: "Montserrat", sans-serif;
+    border-radius: 30px;
+    border: 1px solid black;
+    padding: 10;
+    font-size: 15px;
+    width: 100;
+    height: 40;
+    margin-bottom: 8px;
+}
+.btn.hidden {
+    display: none;
+}
+.payment-details {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+select#role, input, textarea, select{
+    font-family: "Montserrat", sans-serif;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 15px;
+    width: 450;
+    height: 40;
+    margin-bottom: 8px;
+}
+.sidebar-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transition: 0.3s;
+
+}
+
+#sidebar-toggle {
+    position: absolute;
+    right: -30px;
+    top: 0;
+    z-index: -1;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    padding: 10px 15px 10px 122;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 10px;
+    width: 150;
+
+}
+
+.sidebar {
+    width: 275px;
+    height: 100%;
+    background: linear-gradient(165deg, #000000 0%, #1e3932 50%, #000000 75%);
+    color: #fff;
+    transition: 0.3s;
+    overflow-x: hidden;
+    padding: 15;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 15;
+}
+
+.sidebar li {
+    display: flex;
+    align-items: center;
+    padding: 15 15 15 10;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 15;
+    border-radius: 10px;
+}
+
+.sidebar li:hover {
+    background-color: #1f3131;
+}
+
+.sidebar i {
+    font-size: 20px;
+    margin-right: 10px;
+    min-width: 25px;
+    text-align: center;
+}
+
+.sidebar-container.collapsed {
+    width: 70px;
+}
+
+.sidebar-container.collapsed .sidebar {
+    width: 75px;
+}
+
+.sidebar-container.collapsed .menu-text {
+    display: none;
+}
+.sidebar-container.collapsed #sidebar-toggle {
+    right: -70px;
+    
+}
+
+.container {
+    margin-left:340px;
+    transition: 0.3s;
+    width: calc(97% - 220px);
+    height: fit-content;
+    padding: 20px;
+    position: relative;
+
+}
+
+.container.expanded {
+    margin-left: 140px;
+}
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    padding: 0 20 0 17px;
+    background-color: #1f3131;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.sidebar-header i {
+    font-size: 24px;
+    min-width: 30px;
+    text-align: center;
+    padding: 25 25 25 6;
+}
+.sidebar-footer {
+    margin-top: auto;
+    padding: 15px;
+}
+
+#btn-admin-logout,#btn-admin-help {
+    font-family: 'Montserrat';
+    width: 80%;
+    padding: 10px;
+    background-color: black;
+    color: #fff;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    position: absolute;
+}
+#btn-admin-logout{
+    bottom: 100;
+}
+#btn-admin-help {
+    bottom: 50;
+}
+#btn-admin-logout:hover {
+    background-color: #c82333;
+}
+#btn-admin-help:hover {
+    background-color: #1e3932;
+}
+#btn-admin-logout i {
+    margin-right: 10px;
+}
+
+.sidebar-container.collapsed #btn-admin-logout .menu-text {
+    display: none;
+}
+
+.sidebar-container.collapsed #btn-admin-logout {
+    padding: 10px 0;
+    width: 65%;
+}
+
+.sidebar-container.collapsed #btn-admin-logout i {
+    margin-right: 0;
+}
+#loading-screen {
+    font-family: "Oswald", sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    animation: fadeOut 1s forwards;
+    z-index: 9999999;
+}
+/* Add this to your CSS file */
+.spinner-border {
+    border: 4px solid rgb(255 255 255 / 37%);
+    border-top: 4px solid #ffffff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.sidebar-header img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15;
+}
+.sidebar-search {
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: -20px;
+}
+
+#admin-search {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ffffff;
+    border-radius: 76px;
+    font-size: 14px;
+    background-color: #070d0b;
+    transition: all 0.3s ease;
+}
+
+#admin-search:focus {
+    outline: none;
+    border-color: #1e3932;
+    background-color: #fff;
+}
+
+.sidebar-container.collapsed .sidebar-search {
+    display: none;
+}

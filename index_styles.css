@@ -1,0 +1,1594 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "Montserrat", sans-serif;
+    background-color: #f3d8c4;
+    position: absolute;
+    z-index: 1;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(28 28 28 / 70%);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s, visibility 0.5s;
+    z-index: 100000;
+}
+
+.overlay.show {
+    visibility: visible;
+    opacity: 1;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(28 28 28 / 70%); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Apply the blur effect */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    flex: 1; 
+    font-family: "Dancing Script", cursive;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    flex: 10;
+    align-items: center;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    padding: 2 15;
+    border-radius: 105px;
+    background-color: #2d2c2c;
+    transition: 0.5s ease;
+    border: 1px solid #2d2c2c;
+}
+.navbar ul li a:hover {
+    color: rgb(243 216 196);
+    font-size: 23px;
+    box-shadow: 0 0 80px rgb(150 150 150), 0 0 20px rgb(181 156 137);
+    border-bottom: 1.5px solid #f3d8c4;
+}
+.navbar .right-items {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 20px; 
+    gap: 15px; 
+}
+
+.navbar .login-btn, .navbar .logout-btn {
+    font-family: "Montserrat", sans-serif;
+    border: 1px solid white;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 20px;
+    transition: 0.5s ease;
+}
+.navbar .login-btn:hover , .navbar .logout-btn:hover {
+    border: 1px solid #ffe6d5;
+    color: #f8c9aa;
+    border-radius: 50px;
+    background-color: rgb(73 58 48 / 50%);
+}
+
+.navbar .right-icons i {
+    margin: 0 10px;
+    color: white;
+    margin-right: 20px;
+}
+.login-picture img, .register-picture img{
+    height: 705px;
+    width: 420px;
+    border-radius: 5px 0px 0px 5px;
+}
+.login-content, .register-content{
+    width: 100%;
+    padding: 40px;
+}
+.login-container, .register-container {
+    position: relative; /* Make the container relative for absolute positioning of the pseudo-element */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 852px;
+    
+}
+
+.login-container::before, .register-container::before {
+    content: ""; /* Required for pseudo-elements */
+    position: absolute; /* Position it absolutely within the container */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(https://png.pngtree.com/background/20230519/original/pngtree-an-old-coffee-shop-with-very-dark-walls-picture-image_2652909.jpg);
+    background-size: cover;
+    filter: brightness(0.2);
+    z-index: 1; /* Ensure it is below the content but above the background */
+}
+
+.login-box, .register-box {
+    font-family: "Montserrat", sans-serif;
+    background-color: #f3d8c4;
+    position: relative;
+    width: 80%;
+    display: flex;
+    z-index: 2;
+    border: 5px solid #75655a;
+    box-shadow: 0 0 50px #5f5f5f;
+    border-radius: 10px;
+}
+.login-box h2, .register-box h2 {
+    color: #310808;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-family: 'Playfair Display SC', serif;
+    font-weight: 900;
+}
+
+.login-box .input-group, .register-box .input-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.login-box .input-group input, .register-box .input-group input {
+    font-family: "Montserrat", sans-serif;
+    border-radius: 25px;
+    width: 100%;
+    padding: 13px;
+    border: 2px solid #310808;
+    box-shadow: 0 0 15px rgb(203 170 139);
+    font-size: 16px;
+}
+
+.login-box .input-group i, .register-box .input-group i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ccc;
+}
+
+.login-box .options, .register-box .options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.login-box .options input, .register-box .options input {
+    margin-right: 10px;
+}
+
+.login-box .options a, .register-box .options a {
+    color: #007BFF;
+    text-decoration: none;
+    margin-left: auto;
+}
+
+.login-box .login-btn, .register-box .register-btn {
+    font-family: "Oswald", sans-serif;
+    background: #f3d8c4;
+    border: 1px solid #6b594c;
+    color: #6b594c;
+    padding: 5px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.5s ease;
+    font-weight: bold;
+    width: 150;
+}
+.login-box .login-btn:hover, .register-box .register-btn:hover {
+    background: #6b594c;
+    border: 1px solid #f3d8c4;
+    color: #f3d8c4;
+    
+}
+
+.login-box .register-link, .register-box .login-link {
+    margin-bottom: 50px;
+    display: block;
+    color: #3b3129;
+    text-decoration: underline;
+    font-size: 15;
+    width: 248px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #310808;
+}
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.home-container .view-menu-btn, .home-container .login-btn, .home-container .signup-btn {
+    font-family: "Oswald", sans-serif;
+    background: #141817ba;
+    color: #ffcfaf;
+    border: 1.5px solid #ffe6d5;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 25px;
+    margin: 10px;
+    width: 200;
+    height: 60;
+    transition: 0.3s ease;
+    position: relative;
+    left: -10px;
+}
+.home-container .view-menu-btn:hover, .home-container .login-btn:hover, .home-container .signup-btn:hover {
+    background-color: #e3b99c;
+    color: #352a23;
+    border: 1.5px solid #893800;
+    box-shadow: 0 0 10px rgb(215 134 78);
+    font-weight: bold;
+}
+
+.line {
+    border-bottom: 1.5px solid #000000;
+    width: 97%;
+    height: 0;
+    text-align: center !important;
+    margin: 0 auto;
+}
+
+.home-content {
+    width: 100%;
+}
+.view-products-btn, .menu-pdf-btn {
+    font-family: "Montserrat", sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid;
+    font-size: 18px;
+    margin-top: 15;
+    height: 30;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    padding: 15;
+    background-color: #ffffff00;
+
+}
+.advertise-circle {
+    border: 10px solid #bb7f5b;
+    display: flex;
+    height: 400;
+    width: 400;
+    padding: 40;
+    position: absolute;
+    border-radius: 50%;
+    background: url('https://storage.googleapis.com/a1aa/image/cAosmZM91tIhF5Dz1eh427WQMqnTfEfQ979hmaJLPBndieSOB.jpg');
+    right: 50;
+    background-size: cover; 
+    background-position: 13px; 
+    box-shadow: 0 0 80px #bb7f5b;
+}
+
+
+.recommend-item:hover .item-info {
+    opacity: 1;
+
+}
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f3d8c4;
+    transition: opacity 0.5s;
+}
+
+.about-content {
+    margin: 0 auto;
+}
+
+.about-title-container {
+    position: relative; /* Make the parent relative to position the overlay */
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    margin-top: 100px; /* Add 'px' to margin-top value */
+    color: white; /* Text color */
+    text-shadow: 5px 5px 10px rgb(33, 31, 39); /* Text shadow */
+    overflow: hidden; /* Ensure no overflow from the pseudo-element */
+}
+
+.about-title-container::before {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Position it absolutely within the parent */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(https://kaapimachines.com/wp-content/uploads/2021/10/coffee-latte-art-2021-09-03-01-05-38-utc.webp); /* Background image */
+    background-size: cover; /* Cover the entire area */
+    opacity: 0.5; /* Adjust the opacity to darken the image */
+    z-index: 1; /* Place it below text */
+}
+
+
+.about-team-container {
+    position: relative; /* Make the parent relative to position the overlay */
+    padding: 100px;
+    overflow: hidden; /* Ensure no overflow from the pseudo-element */
+}
+
+.about-team-container::before {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Position it absolutely within the parent */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(https://static.vecteezy.com/system/resources/previews/027/102/824/non_2x/group-of-business-team-members-raising-hands-in-the-sunset-sky-background-to-depict-teamwork-free-photo.jpg); /* Background image */
+    background-size: cover; /* Cover the entire area */
+    filter: brightness(0.3);
+    z-index: 1; /* Place it below text */
+}
+.about-team-content {
+    position: relative; /* Ensure text is above the overlay */
+    z-index: 2; /* Ensure it is above the overlay */
+    color: white; /* Change text color if needed for contrast */
+}
+
+.about-team-container h1 {
+    font-size: 55px;
+    font-family: "Playfair Display SC", serif;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 900;
+}
+
+.about-team-container h2 {
+    font-size: 30px;
+    font-family: "Oswald", sans-serif;
+    color: white;
+}
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 65px;
+}
+.team-member {
+    margin: 20px;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(243 216 196);
+    width: 25%;
+}
+
+.team-member img {
+    width: 100%;
+    height: 350px;
+    object-fit: scale-down;
+    border-radius: 10px 10px 0 0;
+}
+
+.contact-container {
+    padding: 30 60;
+    background-color: #292626;
+    color: white;
+    flex-direction: column;
+    height: 450px;
+}
+
+.contact-container h2 {
+    font-size: 36px;
+    font-family: "Oswald", sans-serif;
+    margin-bottom: 10px;
+}
+.contact-container h4 {
+    font-size: 45px;
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    transition: 0.3s ease;
+    width: 1%;
+}
+.contact-container h4:hover {
+    color: gold;
+    cursor: pointer;
+    text-shadow: 0 0 80px rgb(41 38 38), 0 0 30px rgb(201, 186, 121);
+}
+
+.contact-container p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.contact-info {
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+footer {
+    
+    background-color: #1a1818;
+    text-align: center;
+    color: white;
+    padding: 10px;
+}
+footer p{
+    font-family: "Playfair Display SC", serif;
+}
+.socialMedia{
+    display: flex;
+    font-size: 30px;
+    color: hsl(38, 61%, 73%);
+    gap: 20px;
+    margin-bottom: 8px;
+    
+    transition: all 0.3s ease-in-out;
+}
+.socialMedia .bx{
+    border: 1px solid white;
+    border-radius: 50%;
+    transition: all 0.3s ease-in-out;
+}
+.socialMedia .bx:hover{
+    cursor: pointer;
+    color: white;
+    transform: translateY(-4px);
+    
+}
+/* Add this to your CSS file */
+#loading-screen {
+    font-family: "Oswald", sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    animation: fadeOut 1s forwards;
+    z-index: 9999999;
+}
+/* Add this to your CSS file */
+.spinner-border {
+    border: 4px solid rgb(255 255 255 / 37%);
+    border-top: 4px solid #ffffff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.header-image {
+        width: 100%;
+    height: 530;
+    position: absolute;
+    margin-top: -100;
+}
+.container {
+    padding: 465 40 0 40;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 100px;
+}
+.container h1 {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-family: "Playfair Display SC", serif;
+    color: #310808;
+    font-size: 40;
+    font-weight: 900;
+    margin-top: 0;
+}
+.category-container{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    transform: translate(20px, 10px);
+}
+.category-content{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.category-content p{
+    color: #310808;
+    margin-bottom: 0;
+}
+.category-selector {
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer;
+    position: relative;
+}
+.category-selector i {
+    font-size: 30px;
+    color: #310808;
+}
+.category-dropdown {
+    display: flex;
+    position: absolute;
+    overflow: hidden;
+    z-index: 1;
+    flex-direction: column;
+    text-align: left;
+}
+.category-dropdown a {
+    display: block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    width: 300px;
+    transition: 0.2s ease;
+    border-radius: 50px;
+}
+.category-dropdown a:hover {
+    background-color: #ffe9d9;
+    
+    color: black;
+    font-weight: bold;
+}
+.filters, .sort {
+    display: inline-block;
+    margin: 10px;
+}
+.filters button, .sort button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.filters button:hover, .sort button:hover {
+    background-color: #555;
+}
+.products {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.product {
+    background-color: #876f5e;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    color: #ffe3cf;
+    transition: 0.5s ease;
+}
+.product img {
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid #519986;
+}
+.product h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    font-family: "Playfair Display SC", serif;
+    color: white;
+    font-weight: bold;
+    font-size: 28px;
+}
+.product h2 span {
+    font-size: 16px;
+    color: #ccc;
+    margin-left: 50px;
+}
+.product p{
+    text-align: left;
+}
+.product .add-to-cart {
+    position: absolute;
+    top: 282px;
+    right: 25px;
+    background-color: #132520d1;
+    color: #fff;
+    border: 1px solid cornsilk;
+    padding: 5 25;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 15;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+}
+.product .add-to-cart:hover {
+    background-color: #e68900;
+}
+.cart-sidebar {
+    position: fixed;
+    top: 2%;
+    right: -700px;
+    width: 500;
+    height: 96%;
+    backdrop-filter: blur(100px);
+    color: #fff;
+    padding: 0 55px;
+    transition: right 0.3s ease-out;
+    z-index: 100001;
+    border: 2px solid #f3d8c4;
+    border-radius: 15px;
+}
+#cartItemsContainer{
+    max-height: 55vh;
+    overflow-y: auto;
+    padding: 5px;
+}
+.cart-sidebar h2 {
+    font-family: 'Playfair Display SC', serif;
+    color: #ffe9d9;
+    font-size: 35px;
+    border-bottom: 1px solid;
+    margin-top: 60px;
+}
+.cart-sidebar.open {
+    right: 35;
+}
+.cart-sidebar .close-btn {
+    font-family: "Montserrat", sans-serif;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ffffff00;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 20;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px solid #555;
+    padding: 10px;
+    border-radius: 5px;
+}
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.cart-item .item-details {
+    flex-grow: 1;
+}
+.cart-item .item-details h4 {
+    margin: 0;
+    font-size: 14px;
+}
+.cart-item .item-details p {
+    margin: 0;
+    font-size: 12px;
+    color: #ccc;
+}
+.cart-item .quantity {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+}
+.cart-footer {
+    text-align: left;
+    width: 498;
+    padding: 23px 0;
+}
+.cart-footer .total-price {
+    font-size: 23px;
+    margin: 0 20 20;
+    font-weight: bold;
+    font-family: "Playfair Display SC", serif;
+    border-bottom: 1px solid;
+}
+
+.cart-footer .checkout-btn, .cart-footer .view-cart-btn {
+    background-color: #212020;
+    color: #fff;
+    border: 1px solid white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 100px;
+    margin-left: 18px;
+    margin-top: 5;
+    width: 225;
+    height: 60;
+    font-size: 17;
+    font-family: 'Oswald';
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+.cart-footer .checkout-btn:hover, .cart-footer .view-cart-btn:hover {
+    background-color: #f3d8c4;
+    color: #2a2927;
+    border: 1px solid #d9d9d9;
+}
+.overlay1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    z-index: 1000;
+}
+.overlay1.show {
+    display: block;
+}
+.close-payment-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #13121196;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    font-family: "Montserrat", sans-serif;
+}
+
+.close-payment-btn:hover {
+    background-color: #511f1f;
+    border: 1px solid red;
+}
+
+.payment-page {
+    position: fixed;
+    left: -100%;
+    bottom: 5%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 90%;
+    backdrop-filter: blur(70px);
+    display: flex;
+    z-index: 1001;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+    border: 2px solid #cbb5a4;
+    padding: 10;
+    border-radius: 20px;
+    transition: 0.5s ease-in-out;
+    z-index: 100001;
+    box-shadow: 0 0 100px rgb(0 0 0);
+}
+
+.payment-page.show {
+    left:50%;
+}
+.payment-sidebar {
+    width: 30%;
+    background-color: #2d2a28;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    height: 90%;
+    margin-right: 10;
+    border: 1px solid #f3d8c4;
+}
+.payment-form {
+    width: 60%;
+    padding: 20px;
+    height: 90%;
+}
+
+#order-summary {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    max-height: 450px;
+    
+}
+#order-summary li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px solid #555;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#order-summary li img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#order-summary li .item-details {
+    flex-grow: 1;
+}
+
+#order-summary li .item-details h4 {
+    margin: 0;
+    font-size: 14px;
+}
+
+#order-summary li .item-details p {
+    margin: 0;
+    font-size: 12px;
+    color: #ccc;
+}
+
+#order-summary li .quantity-container {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+    padding: 5px;
+}
+
+#order-summary li .quantity-container .quantity {
+    margin: 0;
+    font-size: 14px;
+}
+#total-price {
+    font-size: 21px;
+    font-weight: bold;
+    margin-top: 20px;
+    font-family: 'Playfair Display SC';
+    color: white;
+}
+#payment-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+#payment-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 15px;
+    border: 2px solid #cbb5a4;
+    font-family: "Montserrat", sans-serif;
+    background: none;
+    color: white;
+}
+#make-payment {
+    background-color: #000000;
+    color: #fff;
+    border: 2px solid aliceblue;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-family: "Oswald", sans-serif;
+    font-weight: bold;
+    font-size: 15;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+}
+#make-payment:hover {
+    background-color: #e68900;
+}
+#menu{
+    display: none;
+}
+
+.remove-button{
+    font-family: "Montserrat", sans-serif;
+    border: none;
+    background-color: #222222;
+    color: white;
+    padding: 5 10;
+    margin-left: 15;
+    border-radius: 25px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.navbar .right-icons i {
+    margin: 0 10px;
+}
+.hero {
+    position: relative;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    background-color: black;
+    height: 1080px; /* Adjust the height as needed */
+}
+.hero img {
+    width: 100%;
+    transition: opacity 1s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    
+}
+.hero .slide.active {
+    opacity: 1;
+}
+.hero-text {
+    position: absolute;
+    top: 30%;
+    left: 38%;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+.hero-text h1 {
+    font-family: "Playfair Display SC", serif;
+    font-size: 70px;
+    margin: 0;
+    text-shadow: 0 0 20px #000000, 0 0 30px #48675e;
+    font-weight: 900;
+}
+.hero-text p {
+    color: #ffffe4;
+    font-size: 20px;
+    margin: 10px 0;
+    text-shadow: 0 0 10px #000, 0 0 20px #000, 0 0 30px #000;
+}
+.hero-text button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    cursor: pointer;
+}
+.browse, .recommendation, .introducing-products, .contact, .feedback {
+    padding: 65px;
+}
+.recommendation{
+    background-color: #af9380 ;
+    height: 715px;
+}
+.recommendation-banner img{
+    position: absolute;
+    height: 845px;
+    right: 0;
+}
+.browse{
+    text-align: center;
+    padding: 60 200;
+    margin-bottom: 100;
+}
+.browse h2, .recommendation h2, .introducing-products h2, .contact h2, .feedback h2 {
+    color: #310808;
+    font-size: 50px;
+    font-family: "Playfair Display SC", serif;
+    margin: 0 0 20px 0;
+    font-weight: 900;
+}
+.browse h3 {
+    color:  black;
+    margin-top: -15;
+    margin-bottom: 30;
+    font-size: 20px;
+}
+.recommendation h3 {
+    color: #310808;
+    margin-top: -15;
+    margin-bottom: 45;
+    font-weight: normal;
+    font-size: 15;
+    width: 500;
+}
+.browse .items, .recommendation .items {
+    display: flex;
+    justify-content: space-between;
+}
+.browse .item, .recommendation .item {
+    width: 25%;
+    background-color: rgb(189 154 131);
+    padding: 4;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+.browse .item{
+    box-sizing: border-box;
+}
+.browse .item img{
+    height: 250px;
+    border-radius: 5px;
+}
+.recommendation .item img {
+    border-radius: 50%;
+}
+.browse .item img, .recommendation .item img {
+    width: 100%;
+    height: 100%;
+}
+.recommendation .items {
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 455;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 15px;
+    background-color: #6f5a4b;
+    border-radius: 100px;
+    padding: 15px 0px 15px 15px;
+}
+.recommendation .item {
+    display: inline-block;
+    width: 200px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.introducing-products {
+    display: flex;
+    justify-content: space-between;
+    background-color: #d7b49d;
+    border-radius: 50px;
+    padding: 50px;
+    margin-bottom: 150;
+}
+.introduce{
+    padding: 50px;
+}
+.introducing-products .text {
+    width: 60%;
+}
+.introducing-products p2 {
+    width: 85%;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+}
+.introducing-products .video {
+    width: 45%;
+    font-family: 'Oswald',sans-serif;
+    font-weight: bold;
+}
+.overlay-gradient {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, #000000, #000000e0, #000000bf, #4b4b4b00);
+    z-index: 10;
+    position: absolute;
+}
+.item .hover-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgb(53 47 42), rgb(0 0 0 / 56%), rgb(53 47 42));
+    color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    height: 100%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+.item:hover .hover-info {
+    opacity: 1;
+}
+p1{
+    font-size: 45px;
+    font-family: "Oswald", sans-serif;
+    text-shadow: 0 0 5px #000,
+                 0 0 10px #000,
+                 0 0 15px #000,
+                 0 0 20px #000,
+                 0 0 35px #000,
+                 0 0 40px #000;
+}
+.introducing-products p{
+    color: black;
+    font-size: 17px;
+    width: 450px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 0px 0 85 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#searchInput {
+    width: 400px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #1e3932;
+    border-radius: 30px 0 0 30px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#searchButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    font-family: "Oswald", sans-serif;
+    font-weight: bold;
+}
+
+#searchButton:hover {
+    background-color: #555;
+}
+.cart{
+    position: relative;
+}
+.badge {
+    position: absolute;
+    top: -15px;
+    right: -10px;
+    background-color: #f3d8c4;
+    color: #000000;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    display: none;
+    font-weight: bold;
+}
+.whole-logo{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.product:hover{
+    transform: translateY(-15px);
+    cursor: pointer;
+    box-shadow: 0 0 20px #3d3631;
+
+}
+.about-us {
+    position: relative;
+    padding: 65px;
+    overflow: hidden;
+    margin-bottom: 20px;
+
+}
+
+.about-us::before {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Position it absolutely within the parent */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://i.pinimg.com/736x/f2/9f/7d/f29f7d4417c0b48adbe661c5645ae035.jpg') no-repeat center center; /* Background image */
+    background-size: cover; /* Cover the entire area */
+    filter: brightness(0.2); /* Adjust the opacity to darken the image */
+    z-index: 1; /* Place it below text */
+}
+
+.about-us-content {
+    position: relative; /* Ensure text is above the overlay */
+    z-index: 2; /* Ensure it is above the overlay */
+    color: white; /* Change text color if needed for contrast */
+}
+.about-us h1{
+    font-family: "Playfair Display SC", serif;
+    font-size: 50px;
+    color: white;
+    font-weight: 900;
+}
+.about-us p{
+    width: 600;
+}
+.about-us .read-more{
+    margin-top: 15px;
+    width: 150;
+    height: 50;
+    background: none;
+    border: 2px solid #f3d8c4;
+    color: #f3d8c4;
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    transition: 0.5s ease;
+}
+.about-us .read-more:hover{
+    background: #f3d8c4;
+    border: 2px solid #f3d8c4;
+    color: black;
+    cursor: pointer;
+}
+.introduction-container {
+    padding: 85px;
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: space-between; /* Space out the content evenly */
+    gap: 80px;
+}
+
+.about-us-container{
+    width: 80%; /* Adjust width to fit content */
+}
+.business-hour-container {
+    width: 40%;
+    background-color: #b59c89;
+    padding: 0 60 030;
+    border-radius: 15px;
+}
+.image-container {
+    display: flex;
+    align-items: center;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+.about-us-container h1 {
+    font-size: 55px;
+    font-family: "Playfair Display SC", serif;
+    margin-bottom: 10px;
+    text-align: left;
+    font-weight: 900;
+    color: #310808;
+}
+.about-us-container p {
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+    text-align: left;
+    color: #310808;
+}
+.business-hour-container h2 {
+    font-size: 55px;
+    font-family: "Playfair Display SC", sans-serif;
+    margin-bottom: 10px;
+    text-align: left;
+    font-weight: 900;
+    color: #ffecde;
+}
+.business-hour-container h3 {
+    font-family: "Oswald", sans-serif;
+    color: #ffecde;
+}
+.business-hour-container p {
+    color: white;
+}
+.skill-container::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(https://cdn.shopify.com/s/files/1/1616/2815/files/coffee_in_cups.jpg?v=1682497686) no-repeat center;
+    background-size: cover;
+    filter: brightness(0.3);
+    z-index: 1;
+    
+    
+}
+.skill-container{
+    width: 1080;
+    height: 100%;
+    position: relative;
+    overflow:hidden;
+    border-radius: 15px;
+}
+.skill-content {
+    position: relative; 
+    z-index: 2; 
+    padding: 35 65px;
+}
+.skill-content h1{
+    font-family: 'Oswald', sans-serif;
+    color: white;
+}
+.skill{
+    border: 5px solid #b59c89;
+    width: 100%;
+    height: 200;
+    text-align: center;
+}
+.skill h2{
+    color: antiquewhite;
+    font-size: 40;
+    margin-bottom: 0;
+}
+.skill p{
+    color: #b59c89;  
+    font-size: 15;
+    margin-top: 0;
+}
+.skill-boxes{
+    display: flex;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+.skill-content p{
+    color: white;
+}
+.skill i{
+    color: #fff3e4;
+    font-size: 45;
+
+}
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -1050px;
+    width: 350px;
+    height: 100%;
+    backdrop-filter: blur(100px);
+    transition: left 0.3s ease;
+    z-index: 1000001;
+    padding: 32px;
+    border-right: 3px solid beige;
+}
+
+.sidebar.open {
+    left: 0; /* Show the sidebar */
+}
+
+/* Add styles for the close button */
+#closeSidebarButton {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ffe9d9;
+    position: absolute;
+    left: 370;
+    top: 15;
+    
+}
+.sidebar h2{
+    margin: 30;
+    font-family: 'Playfair Display SC', serif;
+    color: #ffe9d9;
+    font-size: 35px;
+    border-bottom: 1px solid;
+}
+.contact-section {
+    position: relative;
+    padding: 100px;
+    overflow: hidden;
+    display: flex;
+    align-items:baseline;
+    justify-content: space-between;
+    gap: 70px;
+}
+
+.contact-section::before {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Position it absolutely within the parent */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://t3.ftcdn.net/jpg/06/23/15/02/360_F_623150253_lPqjQnwD86LgDRDd2S6xY6RCqjo1Ttm9.jpg')no-repeat center; /* Background image */
+    background-size: cover; /* Cover the entire area */
+    filter: brightness(0.5);
+    z-index: 1; /* Place it below text */
+}
+.contact-content, .find-us-content{
+    z-index: 2;
+    position: relative;
+}
+.contact-content h1 {
+    font-size: 55px;
+    font-family: 'Playfair Display SC', serif;
+    color: white;
+    font-weight: 900;
+    margin-top: 75px;
+}
+.contact-content p {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+.contact-content p a {
+    color: gold;
+    text-decoration: underline;
+}
+.form-container {
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 800;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid #f3d8c4;
+}
+.form-container input, .form-container textarea {
+    font-family: "Montserrat", sans-serif;
+    width: 300px;
+    padding: 15px;
+    margin: 5px 0 20 0;;
+    border: 1px solid #f3d8c4;
+    border-radius: 5px;
+    background-color: #231f1c96;
+    color: #ffffff;
+    transition: 0.5s ease;
+    
+}
+.form-container textarea {
+    height: 150px;
+    width: 626px;
+    max-width: 800px;
+    min-width: 800px;
+    max-height: 230px;
+}
+.form-container button {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    background-color: #333333;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-top: 35px;
+}
+.form-container button:hover {
+    background-color: #555555;
+}
+.contact-feedback-container {
+    flex-direction: column;
+    width: 100%;
+}
+.feedback-container{
+    display: flex;
+    justify-content: center;
+}
+.form-container h1{
+    font-size: 15px;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+}
+.form-container p{
+    font-size: 13;
+    margin: 5 0;
+}
+.topic-selector{
+    font-family: "Montserrat", sans-serif;
+    width: 500px;
+    padding: 15px;
+    margin: 5px 0 20 0;
+    border: 1px solid #f3d8c4;
+    border-radius: 5px;
+    background-color: #231f1c96;
+    color: #ffffff;
+    transition: 0.5s ease;
+}
+.find-us-boxes{
+    background-color: #514740e0;
+    padding: 15 30px;
+    width: 550;
+    border-radius: 5px;
+
+}
+.find-us-boxes h{
+    color: white;
+    font-family: 'Playfair Display SC',serif;
+    font-size: 45px;
+}
+.find-us-boxes h1{
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+}
+.find-us-boxes p{
+    color: white;
+    font-size: 15px;
+}
+.find-us-boxes p2{
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+.find-us-content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.team-member p{
+    font-weight: normal;
+    font-size: 18;
+}
+.team-member h3{
+    font-weight: bold;
+}
+.ways-to-eat-btn{
+    width: 144px;
+    height: 40px;
+    font-size: 18px;
+    font-family: 'Oswald', sans-serif;
+    background: none;
+    border: 1px solid #ffe9d9;
+    color: #ffe9d9;
+    padding: 5 10px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+.ways-to-eat-btn:hover{
+    background-color: #d5bfad;
+    color: #2d2a28;
+    border: 1px solid #d5bfad;
+    cursor: pointer;
+}
+.ways-to-eat-container{
+    display: flex;
+    gap: 0px;
+    justify-content: center;
+}
